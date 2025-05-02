@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Hồ Bảo Linh</title>
+  <title>Hồ Bảo Linh abc</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Leaflet CSS -->
@@ -23,15 +23,20 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script>
-    // Tạo bản đồ nền
-    var map = L.map('map').setView([16.5, 107.5], 7);
+    // Tạo bản đồ nền và zoom vào vị trí Hồ Bảo Linh
+    var map = L.map('map').setView([21.910388142247072, 105.58053963757321], 13);
 
     // Lớp nền OSM
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Load file GeoJSON tại chỗ
+    // Thêm marker tại Hồ Bảo Linh
+    L.marker([21.910388142247072, 105.58053963757321]).addTo(map)
+      .bindPopup('<b>Hồ Bảo Linh</b>')
+      .openPopup();
+
+    // Load file GeoJSON nếu có
     fetch('hobaolinh.geojson')
       .then(res => res.json())
       .then(data => {
